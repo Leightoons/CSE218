@@ -1,27 +1,31 @@
 package datastructures;
 
-import java.util.Arrays;
-import java.util.Iterator;
+import java.io.*;
+import java.util.*;
 import java.util.function.*;
 
-public class Bag <E> implements Iterable<E> {
+public class Bag <E> implements Iterable<E>, Serializable {
+	private static final long serialVersionUID = 1L;
+	private static final int CAPACITY_DEFAULT = 16;
+	private static final boolean ALLOWDUPES_DEFAULT = true;
+	
 	private int size;
 	private E[] array;
 	
 	private boolean allowDuplicates;
 	
-	private final static int CAPACITY_DEFAULT = 16;
 	
 	public Bag(int capacity, boolean allowDuplicates) {
+		this.allowDuplicates = allowDuplicates;
 		capacity = (capacity > 0)? capacity : CAPACITY_DEFAULT;
 		array = (E[]) new Object[capacity];
 		size = 0;
 	}
 	public Bag(int capacity) {
-		this(capacity, false);
+		this(capacity, ALLOWDUPES_DEFAULT);
 	}
 	public Bag() {
-		this(CAPACITY_DEFAULT);
+		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT);
 	}
 	
 	public int findIndex(Predicate<E> filter) {
@@ -33,6 +37,15 @@ public class Bag <E> implements Iterable<E> {
 	}
 	public int findIndex(E element) {
 		return findIndex(e -> e == element);
+	}
+	
+	public E find(Predicate<E> filter) {
+		int i = findIndex(filter);
+		return (i < 0)? null : array[i];
+	}
+	public E find(E element) {
+		int i = findIndex(element);
+		return (i < 0)? null : array[i];
 	}
 	
 	private boolean resizeArray(int newSize) {
@@ -60,7 +73,7 @@ public class Bag <E> implements Iterable<E> {
 		int i = findIndex(element);
 		if (i < 0) return false;
 		array[i] = array[--size];
-		array[size-1] = null;
+		array[size] = null;
 		return true;
 	}
 	
