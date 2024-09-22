@@ -1,9 +1,10 @@
 package datastructures;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.function.*;
 
-public class Bag <E> {
+public class Bag <E> implements Iterable<E> {
 	private int size;
 	private E[] array;
 	
@@ -61,6 +62,31 @@ public class Bag <E> {
 		array[i] = array[--size];
 		array[size-1] = null;
 		return true;
+	}
+	
+	private class BagIterator implements Iterator<E> {
+		Bag<E> bag;
+		int i;
+		
+		public BagIterator(Bag<E> bag) {
+			i = 0;
+			this.bag = bag;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			return i < bag.size;
+		}
+
+		@Override
+		public E next() {
+			return bag.array[i++];
+		}
+		
+	}
+	@Override
+	public Iterator<E> iterator() {
+		return new BagIterator(this);
 	}
 	
 }
