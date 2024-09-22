@@ -40,11 +40,27 @@ public class Bag <E> {
 		array = newArray;
 		return true;
 	}
+	private boolean resizeArray() {
+		return resizeArray(size*2);
+	}
 
 	public boolean add(E element) {
 		if (!allowDuplicates) {
 			if (findIndex(element) >= 0) return false;
 		}
+		if (size >= array.length) {
+			resizeArray();
+		}
+		array[size++] = element;
+		return true;
+	}
+	
+	public boolean remove(E element) {
+		int i = findIndex(element);
+		if (i < 0) return false;
+		array[i] = array[--size];
+		array[size-1] = null;
+		return true;
 	}
 	
 }
