@@ -16,12 +16,14 @@ public class DataCenter implements Serializable {
 	private Bag<Section> sections;
 	private Bag<Textbook> textbooks;
 	private Bag<Classroom> classrooms;
+	private Bag<Student> students;
 	
 	private DataCenter() {
 		courses = new Bag<Course>();
 		sections = new Bag<Section>();
 		textbooks = new Bag<Textbook>();
 		classrooms = new Bag<Classroom>();
+		students = new Bag<Student>();
 	}
 	
 	public static DataCenter getInstance() {
