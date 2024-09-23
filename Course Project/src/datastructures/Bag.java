@@ -23,6 +23,9 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	public Bag(int capacity) {
 		this(capacity, ALLOWDUPES_DEFAULT);
 	}
+	public Bag(boolean allowDuplicates) {
+		this(CAPACITY_DEFAULT, allowDuplicates);
+	}
 	public Bag() {
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT);
 	}

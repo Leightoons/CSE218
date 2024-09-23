@@ -12,18 +12,18 @@ public class DataCenter implements Serializable {
 	private static final String FILEPATH = System.getProperty("user.dir")+"/dataCenter.dat";
 	private static DataCenter instance = null;
 	
-	// bags should be replaced with hashmaps for easier matching with crns/ids
+	// bags could be replaced with hashmaps for easier matching with crns/ids
 	private Bag<Course> courses;
 	private Bag<Section> sections;
 	private Bag<Textbook> textbooks;
-	private Bag<Classroom> classrooms;
+	//private Bag<Classroom> classrooms;
 	private Bag<Student> students;
 	
 	private DataCenter() {
 		courses = new Bag<Course>();
 		sections = new Bag<Section>();
 		textbooks = new Bag<Textbook>();
-		classrooms = new Bag<Classroom>();
+		//classrooms = new Bag<Classroom>();
 		students = new Bag<Student>();
 	}
 	
@@ -65,6 +65,12 @@ public class DataCenter implements Serializable {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	
+	private static <T> boolean storeElement(T element, Bag<T> bag) {
+		return false;
+		
 	}
 	
 }

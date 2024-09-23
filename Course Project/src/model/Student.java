@@ -2,7 +2,7 @@ package model;
 
 import datastructures.*;
 
-public class Student {
+public class Student implements Comparable<Student>{
 	private Name name;
 	private String id;
 	private Major major;
@@ -87,4 +87,8 @@ public class Student {
 		this.gpa = gpa;
 	}
 	
+	@Override
+	public int compareTo(Student other) {
+		return id.compareTo(other.id);
+	}
 }

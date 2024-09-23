@@ -6,6 +6,13 @@ public class MeetingTime {
 	private LocalTime endTime;
 	private DayOfWeek weekday;
 	
+	public enum TimeSegment {
+		EARLYMORNING,
+		MORNING,
+		AFTERNOON,
+		EVENING
+	}
+	
 	public MeetingTime(LocalTime startTime, LocalTime endTime, DayOfWeek weekday) {
 		this.startTime = startTime;
 		this.endTime = endTime;

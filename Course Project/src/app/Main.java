@@ -9,14 +9,11 @@ public class Main {
 		for (String s: new String[]{"a","c","b","c","c","d","e","f","c"}) {
 			bag.add(s);
 		}
-		
 		//bag.remove("c");
-		
 		for (String s: bag) {
 			System.out.println(s);
 		}
 		
-		//System.out.println("End Process");
 	}
 
 }
