@@ -9,11 +9,10 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	private static final int CAPACITY_DEFAULT = 16;
 	private static final boolean ALLOWDUPES_DEFAULT = true;
 	
-	private int size;
-	private E[] array;
+	protected int size;
+	protected E[] array;
 	
-	private boolean allowDuplicates;
-	
+	protected boolean allowDuplicates;
 	
 	public Bag(int capacity, boolean allowDuplicates) {
 		this.allowDuplicates = allowDuplicates;
@@ -27,6 +26,12 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	public Bag() {
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT);
 	}
+	public Bag(E[] array) {
+		this(array.length);
+		for (int i = 0; i < array.length; i++) {
+			this.array[i] = array[i];
+		}
+	}
 	
 	public int findIndex(Predicate<E> filter) {
 		for (int i = 0; i < size; i++) {
@@ -36,7 +41,8 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		return -1; //item not found
 	}
 	public int findIndex(E element) {
-		return findIndex(e -> e == element);
+		//return findIndex(e -> e == element);
+		return findIndex(e -> e.equals(element));
 	}
 	
 	public E find(Predicate<E> filter) {
@@ -48,13 +54,13 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		return (i < 0)? null : array[i];
 	}
 	
-	private boolean resizeArray(int newSize) {
+	protected boolean resizeArray(int newSize) {
 		if (newSize <= size || newSize == array.length) return false;
 		E[] newArray = Arrays.copyOf(array, newSize);
 		array = newArray;
 		return true;
 	}
-	private boolean resizeArray() {
+	protected boolean resizeArray() {
 		return resizeArray(size*2);
 	}
 
@@ -75,6 +81,10 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		array[i] = array[--size];
 		array[size] = null;
 		return true;
+	}
+	
+	public E[] toArray() {
+		return Arrays.copyOf(array, size);
 	}
 	
 	private class BagIterator implements Iterator<E> {

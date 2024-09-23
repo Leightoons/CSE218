@@ -12,6 +12,7 @@ public class DataCenter implements Serializable {
 	private static final String FILEPATH = System.getProperty("user.dir")+"/dataCenter.dat";
 	private static DataCenter instance = null;
 	
+	// bags should be replaced with hashmaps for easier matching with crns/ids
 	private Bag<Course> courses;
 	private Bag<Section> sections;
 	private Bag<Textbook> textbooks;

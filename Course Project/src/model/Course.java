@@ -1,9 +1,11 @@
 package model;
 
+import datastructures.*;
+
 public class Course {
 	private String name;
 	private String desc;
-	private byte credits;
+	private double credits;
 	private Major major;
-	// array of sections
+	private Bag<String> sections;
 }
