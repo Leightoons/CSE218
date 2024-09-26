@@ -6,6 +6,10 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 	
 	private boolean sortReverse;
 	
+	public SortedBag(int capacity, boolean allowDuplicates, boolean sortReverse) {
+		super(capacity, allowDuplicates);
+		this.sortReverse = sortReverse;
+	}
  	public SortedBag(boolean allowDuplicates) {
 		this(allowDuplicates, false);
 	}
@@ -27,10 +31,7 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 	public SortedBag(E[] array, boolean allowDuplicates, boolean sortReverse) {
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
 	}
-	public SortedBag(int capacity, boolean allowDuplicates, boolean sortReverse) {
-		super(capacity, allowDuplicates);
-		this.sortReverse = sortReverse;
-	}
+	
 
 	
 	private int findTargetIndex(E element) {
