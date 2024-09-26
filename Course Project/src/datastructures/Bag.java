@@ -44,8 +44,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		return -1; //item not found
 	}
 	public int findIndex(E element) {
-		//return findIndex(e -> e == element);
-		return findIndex(e -> e.equals(element));
+		return findIndex(e -> element.equals(e));
 	}
 	
 	public E find(Predicate<E> filter) {
@@ -64,7 +63,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		return true;
 	}
 	protected boolean resizeArray() {
-		return resizeArray(size*2);
+		return resizeArray((size > 0)? size*2 : 1);
 	}
 
 	public boolean add(E element) {
@@ -88,6 +87,11 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	
 	public E[] toArray() {
 		return Arrays.copyOf(array, size);
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Bag[%s]", Arrays.toString(toArray()));
 	}
 	
 	private class BagIterator implements Iterator<E> {
