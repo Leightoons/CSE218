@@ -6,8 +6,8 @@ import java.util.function.*;
 
 public class Bag <E> implements Iterable<E>, Serializable {
 	private static final long serialVersionUID = 1L;
-	private static final int CAPACITY_DEFAULT = 16;
-	private static final boolean ALLOWDUPES_DEFAULT = true;
+	protected static final int CAPACITY_DEFAULT = 16;
+	protected static final boolean ALLOWDUPES_DEFAULT = true;
 	
 	protected int size;
 	protected E[] array;

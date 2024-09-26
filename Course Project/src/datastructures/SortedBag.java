@@ -2,23 +2,36 @@ package datastructures;
 
 
 public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
-	public SortedBag() {
-		super();
-	}
-	public SortedBag(boolean allowDuplicates) {
-		super(allowDuplicates);
+	private static final long serialVersionUID = 1L;
+	
+	private boolean sortReverse;
+	
+ 	public SortedBag(boolean allowDuplicates) {
+		this(allowDuplicates, false);
 	}
 	public SortedBag(E[] array) {
-		super(array);
+		this(array, ALLOWDUPES_DEFAULT, false);
 	}
 	public SortedBag(int capacity, boolean allowDuplicates) {
-		super(capacity, allowDuplicates);
+		this(capacity, allowDuplicates, false);
 	}
 	public SortedBag(int capacity) {
-		super(capacity);
+		this(capacity, ALLOWDUPES_DEFAULT, false);
+	}
+	public SortedBag() {
+		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
+	}
+	public SortedBag(boolean allowDuplicates, boolean sortReverse) {
+		this(CAPACITY_DEFAULT, allowDuplicates, false);
+	}
+	public SortedBag(E[] array, boolean allowDuplicates, boolean sortReverse) {
+		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
+	}
+	public SortedBag(int capacity, boolean allowDuplicates, boolean sortReverse) {
+		super(capacity, allowDuplicates);
+		this.sortReverse = sortReverse;
 	}
 
-	private static final long serialVersionUID = 1L;
 	
 	private int findTargetIndex(E element) {
 		int low = 0;
