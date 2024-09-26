@@ -6,11 +6,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		SortedBag<String> bag = new SortedBag<>(1, true);
-		for (String s: new String[]{"a","c","b","c","a","c","d","e","f","c"}) {
+		for (String s: new String[]{"c","j","b","i","h","g","d","e","f","a",}) {
 		//for (Integer s: new Integer[]{2,3,1,5,4,6,9,8,7}) {
 			bag.add(s);
 		}
-		//bag.remove("c");
+		bag.remove("c");
 		//for (String s: bag) System.out.println(s);
 		System.out.println(bag.toString());
 		

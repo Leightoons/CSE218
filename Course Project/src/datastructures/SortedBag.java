@@ -52,5 +52,14 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 		++size;
 		return true;	
 	}
+	
+	@Override
+	public boolean remove(E element) {
+		int i = findIndex(element);
+		if (i < 0) return false;
+		System.arraycopy(array, i+1, array, i, size-i);
+		array[size--] = null;
+		return true;
+	}
 
 }
