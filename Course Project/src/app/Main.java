@@ -5,7 +5,7 @@ import datastructures.*;
 public class Main {
 
 	public static void main(String[] args) {
-		SortedBag<String> bag = new SortedBag<>(1, true);
+		SortedBag<String> bag = new SortedBag<>(1, true, true);
 		for (String s: new String[]{"c","j","b","i","h","g","d","e","f","a",}) {
 		//for (Integer s: new Integer[]{2,3,1,5,4,6,9,8,7}) {
 			bag.add(s);

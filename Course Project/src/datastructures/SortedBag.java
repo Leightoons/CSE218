@@ -39,13 +39,13 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 		
 		while (low < high) {
 			int mid = (high+low)/2;
-			int comp = element.compareTo(array[mid]);
+			int comp = element.compareTo(array[mid]) * (sortReverse? -1 : 1);
 			if (comp == 0) return mid;
 			else if (comp > 0) high = mid - 1;
 			else low = mid + 1;
 		}
 		if (low == size) return size;
-		else return (element.compareTo(array[low]) > 0)? low : low+1;
+		else return (element.compareTo(array[low])*(sortReverse? -1 : 1) > 0)? low : low+1;
 		//return -1;
 	}
 	
