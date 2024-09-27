@@ -19,6 +19,10 @@ public class Utility {
 		return array[r];
 	}
 	
+	public static boolean randomBoolean() {
+		return Utility.choose(0, 1) == 1;
+	}
+	
 	public static String randomNumberString(int length) {
 		char[] c = new char[length];
 		for (int i = 0; i < c.length; i++) {
