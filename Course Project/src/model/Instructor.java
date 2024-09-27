@@ -1,26 +1,22 @@
 package model;
 
-import java.io.*;
+import java.io.Serializable;
 
 import datastructures.*;
 
-public class Student implements Comparable<Student>, Serializable {
+public class Instructor implements Comparable<Instructor>, Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Name name;
 	private String id;
-	private Major major;
-	private double gpa;
 	private Bag<Section> currentSections;
 	
-	public Student(Name name, String id, Major major, double gpa) {
+	public Instructor(Name name, String id) {
 		this.name = name;
 		this.id = id;
-		this.major = major;
-		this.gpa = gpa;
 		currentSections = new Bag<Section>(false);
 	}
-	
+
 	public Name getName() {
 		return name;
 	}
@@ -35,26 +31,13 @@ public class Student implements Comparable<Student>, Serializable {
 		this.id = id;
 	}
 
-	public Major getMajor() {
-		return major;
-	}
-	public void setMajor(Major major) {
-		this.major = major;
-	}
-
-	public double getGpa() {
-		return gpa;
-	}
-	public void setGpa(double gpa) {
-		this.gpa = gpa;
-	}
-	
-	public Bag<Section> getSections() {
+	public Bag<Section> getCurrentSections() {
 		return currentSections;
 	}
 	
 	@Override
-	public int compareTo(Student other) {
+	public int compareTo(Instructor other) {
 		return id.compareTo(other.id);
 	}
+
 }

@@ -11,7 +11,6 @@ public class Classroom implements Comparable<Classroom>, Serializable{
 	private boolean hasProjector;
 	
 	public Classroom(String room, String building, int capacity, boolean hasProjector) {
-		super();
 		this.room = room;
 		this.building = building;
 		this.capacity = capacity;
@@ -46,8 +45,13 @@ public class Classroom implements Comparable<Classroom>, Serializable{
 		this.hasProjector = hasProjector;
 	}
 
-	public boolean equals(Classroom other) {
-		return (building.equals(other.building) && room.equals(other.room));
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		Classroom other = (Classroom) obj;
+		return building.equals(other.building) && room.equals(other.room);
 	}
 	
 	@Override

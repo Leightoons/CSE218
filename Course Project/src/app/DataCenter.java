@@ -17,7 +17,7 @@ public class DataCenter implements Serializable {
 	private SortedBag<Section> sections;
 	private SortedBag<Textbook> textbooks;
 	private SortedBag<Student> students;
-	//private Bag<Classroom> classrooms;
+	private SortedBag<Classroom> classrooms;
 	
 	private DataCenter() {
 		courses = new SortedBag<Course>();

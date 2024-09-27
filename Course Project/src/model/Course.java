@@ -12,7 +12,15 @@ public class Course implements Comparable<Course>, Serializable {
 	private String desc;
 	private double credits;
 	private Major major;
-	private Bag<String> sections;
+	private SortedBag<String> sections;
+	
+	public Course(String title, String courseNumber, String desc, double credits, Major major) {
+		this.title = title;
+		this.courseNumber = courseNumber;
+		this.desc = desc;
+		this.credits = credits;
+		this.major = major;
+	}
 	
 	public String getTitle() {
 		return title;

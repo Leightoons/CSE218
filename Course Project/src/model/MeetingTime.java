@@ -2,7 +2,7 @@ package model;
 import java.io.*;
 import java.time.*;
 
-public class MeetingTime implements Serializable{
+public class MeetingTime implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private LocalTime startTime;
@@ -45,6 +45,15 @@ public class MeetingTime implements Serializable{
 	
 	public Duration getDuration() {
 		return Duration.between(startTime, endTime);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		MeetingTime other = (MeetingTime) obj;
+		return weekday.equals(other.weekday) && startTime.equals(other.startTime) && endTime.equals(other.endTime);
 	}
 	
 	public boolean isConflicting(MeetingTime other) {
