@@ -1,6 +1,5 @@
 package datastructures;
 
-
 public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 	private static final long serialVersionUID = 1L;
 	
@@ -31,8 +30,6 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 	public SortedBag(E[] array, boolean allowDuplicates, boolean sortReverse) {
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
 	}
-	
-
 	
 	private int findTargetIndex(E element) {
 		int low = 0;

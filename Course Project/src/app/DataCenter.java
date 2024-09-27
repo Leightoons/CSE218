@@ -13,18 +13,18 @@ public class DataCenter implements Serializable {
 	private static DataCenter instance = null;
 	
 	// bags could be replaced with hashmaps for easier matching with crns/ids
-	private Bag<Course> courses;
-	private Bag<Section> sections;
-	private Bag<Textbook> textbooks;
-	private Bag<Student> students;
+	private SortedBag<Course> courses;
+	private SortedBag<Section> sections;
+	private SortedBag<Textbook> textbooks;
+	private SortedBag<Student> students;
 	//private Bag<Classroom> classrooms;
 	
 	private DataCenter() {
-		courses = new Bag<Course>();
-		sections = new Bag<Section>();
-		textbooks = new Bag<Textbook>();
+		courses = new SortedBag<Course>();
+		sections = new SortedBag<Section>();
+		textbooks = new SortedBag<Textbook>();
 		//classrooms = new Bag<Classroom>();
-		students = new Bag<Student>();
+		students = new SortedBag<Student>();
 	}
 	
 	public static DataCenter getInstance() {
@@ -67,10 +67,5 @@ public class DataCenter implements Serializable {
 		return false;
 	}
 	
-	
-	private static <T> boolean storeElement(T element, Bag<T> bag) {
-		return false;
-		
-	}
 	
 }

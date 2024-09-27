@@ -1,8 +1,12 @@
 package model;
 
+import java.io.*;
+
 import datastructures.*;
 
-public class Student implements Comparable<Student>{
+public class Student implements Comparable<Student>, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private Name name;
 	private String id;
 	private Major major;
@@ -48,6 +52,13 @@ public class Student implements Comparable<Student>{
 		}
 	}
 	
+	public Student(Name name, String id, Major major, double gpa) {
+		this.name = name;
+		this.id = id;
+		this.major = major;
+		this.gpa = gpa;
+	}
+	
 	public Name getName() {
 		return name;
 	}
@@ -76,15 +87,8 @@ public class Student implements Comparable<Student>{
 		this.gpa = gpa;
 	}
 	
-	public Section[] getSections() {
-		return currentSections.toArray();
-	}
-	
-	public Student(Name name, String id, Major major, double gpa) {
-		this.name = name;
-		this.id = id;
-		this.major = major;
-		this.gpa = gpa;
+	public Bag<Section> getSections() {
+		return currentSections;
 	}
 	
 	@Override

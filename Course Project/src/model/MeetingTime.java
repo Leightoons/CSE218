@@ -1,7 +1,10 @@
 package model;
+import java.io.*;
 import java.time.*;
 
-public class MeetingTime {
+public class MeetingTime implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private LocalTime startTime;
 	private LocalTime endTime;
 	private DayOfWeek weekday;

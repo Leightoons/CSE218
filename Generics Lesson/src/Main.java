@@ -6,7 +6,7 @@ public class Main {
 		ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1,2,3));
 		ArrayList<String> list2 = new ArrayList<>(Arrays.asList("A","B","C"));
 		showList(list1, list2);
-		//showList2(list1, list2); // gives error
+		showList2(list1, list2); // gives error
 
 	}
 	
