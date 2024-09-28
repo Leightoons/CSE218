@@ -51,9 +51,9 @@ public class DummyData {
 				Utility.randomBoolean(),
 				new Random().nextInt(12, 33),
 				null, //GET CLASSROOM
-				new MeetingTime[0], //GET MEETING TIMES
+				null, //GET MEETING TIMES
 				null, //GET INSTRUCTOR
-				new Textbook[0] //GET TEXTBOOKS
+				null //GET TEXTBOOKS
 		);	
 	}
 	

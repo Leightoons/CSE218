@@ -1,10 +1,11 @@
 package model;
 import java.io.*;
 import java.time.*;
+import java.util.*;
 
 import datastructures.*;
 
-public class Section implements Comparable<Section>, Serializable {
+public class Section implements Comparable<Section>, Indexed<String>, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public String getCrn() {
@@ -42,11 +43,8 @@ public class Section implements Comparable<Section>, Serializable {
 		this.room = room;
 	}
 
-	public Bag<MeetingTime> getMeetingTimes() {
+	public ArrayList<MeetingTime> getMeetingTimes() {
 		return meetingTimes;
-	}
-	public void setMeetingTimes(Bag<MeetingTime> meetingTimes) {
-		this.meetingTimes = meetingTimes;
 	}
 
 	public String getInstructor() {
@@ -56,18 +54,12 @@ public class Section implements Comparable<Section>, Serializable {
 		this.instructor = instructor;
 	}
 
-	public Bag<String> getTextbooks() {
+	public ArrayList<String> getTextbooks() {
 		return textbooks;
 	}
-	public void setTextbooks(Bag<String> textbooks) {
-		this.textbooks = textbooks;
-	}
 
-	public SortedBag<String> getStudents() {
+	public ArrayList<String> getStudents() {
 		return students;
-	}
-	public void setStudents(SortedBag<String> students) {
-		this.students = students;
 	}
 
 	private String crn;
@@ -75,29 +67,31 @@ public class Section implements Comparable<Section>, Serializable {
 	private boolean isOnline;
 	private int capacity;
 	private Classroom room;
-	private Bag<MeetingTime> meetingTimes;
+	private ArrayList<MeetingTime> meetingTimes;
 	private String instructor;
-	private Bag<String> textbooks;
-	private SortedBag<String> students;
+	private ArrayList<String> textbooks;
+	private ArrayList<String> students;
 	
-	public Section(String crn, String courseNumber, boolean isOnline, int capacity, Classroom room, MeetingTime[] meetingTimes, Instructor instructor, Textbook[] textbooks) {
+	public Section(String crn, String courseNumber, boolean isOnline, int capacity, Classroom room, ArrayList<MeetingTime> meetingTimes, Instructor instructor, ArrayList<Textbook> textbooks) {
 		this.crn = crn;
 		this.courseNumber = courseNumber;
 		this.isOnline = isOnline;
 		this.room = room;
-		this.meetingTimes = new Bag<MeetingTime>();
-			for (MeetingTime mt : meetingTimes)
-				this.meetingTimes.add(mt);
+		this.meetingTimes = new ArrayList<MeetingTime>();
+			for (MeetingTime mt : meetingTimes) this.meetingTimes.add(mt);
 		this.instructor = instructor.getId();
-		this.textbooks = new Bag<String>();
-			for (Textbook tb : textbooks)
-				this.textbooks.add(tb.getIsbn());
-		this.students = new SortedBag<String>(capacity, false);
+		this.textbooks = new ArrayList<String>();
+			for (Textbook tb : textbooks) this.textbooks.add(tb.getIsbn());
+		this.students = new ArrayList<String>();
 	}
 	
 	@Override
 	public int compareTo(Section other) {
 		return crn.compareTo(other.crn);
+	}
+	@Override
+	public String getIndex() {
+		return crn;
 	}
 	
 }

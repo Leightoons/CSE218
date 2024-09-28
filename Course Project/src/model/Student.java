@@ -4,7 +4,7 @@ import java.io.*;
 
 import datastructures.*;
 
-public class Student implements Comparable<Student>, Serializable {
+public class Student implements Comparable<Student>, Indexed<String>, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Name name;
@@ -56,5 +56,10 @@ public class Student implements Comparable<Student>, Serializable {
 	@Override
 	public int compareTo(Student other) {
 		return id.compareTo(other.id);
+	}
+
+	@Override
+	public String getIndex() {
+		return id;
 	}
 }

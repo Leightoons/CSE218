@@ -67,5 +67,8 @@ public class DataCenter implements Serializable {
 		return false;
 	}
 	
+	public static Course findCourse(String courseNumber) {
+		return null;
+	}
 	
 }

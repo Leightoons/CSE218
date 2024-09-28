@@ -1,8 +1,13 @@
 package model;
 
+import java.io.*;
 import java.util.*;
 
-public class Textbook implements Comparable<Textbook>{
+import datastructures.*;
+
+public class Textbook implements Comparable<Textbook>, Indexed<String>, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private String isbn;
 	private String title;
 
@@ -32,6 +37,11 @@ public class Textbook implements Comparable<Textbook>{
 	@Override
 	public int compareTo(Textbook other) {
 		return isbn.compareTo(other.isbn);
+	}
+	
+	@Override
+	public String getIndex() {
+		return isbn;
 	}
 	
 }

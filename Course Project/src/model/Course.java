@@ -1,10 +1,11 @@
 package model;
 
 import java.io.*;
+import java.util.*;
 
 import datastructures.*;
 
-public class Course implements Comparable<Course>, Serializable {
+public class Course implements Comparable<Course>, Indexed<String>, Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String title;
@@ -12,7 +13,7 @@ public class Course implements Comparable<Course>, Serializable {
 	private String desc;
 	private double credits;
 	private Major major;
-	private SortedBag<String> sections;
+	private ArrayList<String> sections;
 	
 	public Course(String title, String courseNumber, String desc, double credits, Major major) {
 		this.title = title;
@@ -57,12 +58,17 @@ public class Course implements Comparable<Course>, Serializable {
 		this.major = major;
 	}
 	
-	public Bag<String> getSections() {
+	public ArrayList<String> getSections() {
 		return sections;
 	}
 	
 	@Override
 	public int compareTo(Course other) {
 		return courseNumber.compareTo(other.courseNumber);
+	}
+
+	@Override
+	public String getIndex() {
+		return courseNumber;
 	}
 }

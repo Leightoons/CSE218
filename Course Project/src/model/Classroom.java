@@ -2,7 +2,10 @@ package model;
 
 import java.io.*;
 
-public class Classroom implements Comparable<Classroom>, Serializable{
+import datastructures.*;
+import javafx.util.*;
+
+public class Classroom implements Comparable<Classroom>, Indexed<String>, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String room;
@@ -58,5 +61,10 @@ public class Classroom implements Comparable<Classroom>, Serializable{
 	public int compareTo(Classroom other) {
 		int comp = building.compareTo(other.building);
 		return (comp == 0)? room.compareTo(other.room) : comp;
+	}
+
+	@Override
+	public String getIndex() {
+		return building+room;
 	}
 }

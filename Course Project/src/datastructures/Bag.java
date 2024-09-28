@@ -84,6 +84,11 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		array[size] = null;
 		return true;
 	}
+	public boolean remove(Predicate<E> filter) {
+		E element = find(filter);
+		if (element == null) return false;
+		return remove(element);
+	}
 	
 	public E[] toArray() {
 		return Arrays.copyOf(array, size);

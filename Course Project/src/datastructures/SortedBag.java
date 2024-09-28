@@ -1,6 +1,6 @@
 package datastructures;
 
-public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
+public class SortedBag<E extends Object & Comparable<E> & Indexed<?>> extends Bag<E> {
 	private static final long serialVersionUID = 1L;
 	
 	private boolean sortReverse;
