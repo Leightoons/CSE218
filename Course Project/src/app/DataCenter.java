@@ -23,8 +23,8 @@ public class DataCenter implements Serializable {
 		courses = new SortedBag<Course>();
 		sections = new SortedBag<Section>();
 		textbooks = new SortedBag<Textbook>();
-		//classrooms = new Bag<Classroom>();
 		students = new SortedBag<Student>();
+		classrooms = new SortedBag<Classroom>();
 	}
 	
 	public static DataCenter getInstance() {

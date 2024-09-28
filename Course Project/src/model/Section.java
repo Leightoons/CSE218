@@ -7,6 +7,69 @@ import datastructures.*;
 public class Section implements Comparable<Section>, Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	public String getCrn() {
+		return crn;
+	}
+	public void setCrn(String crn) {
+		this.crn = crn;
+	}
+
+	public String getCourseNumber() {
+		return courseNumber;
+	}
+	public void setCourseNumber(String courseNumber) {
+		this.courseNumber = courseNumber;
+	}
+
+	public boolean isOnline() {
+		return isOnline;
+	}
+	public void setOnline(boolean isOnline) {
+		this.isOnline = isOnline;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public Classroom getRoom() {
+		return room;
+	}
+	public void setRoom(Classroom room) {
+		this.room = room;
+	}
+
+	public Bag<MeetingTime> getMeetingTimes() {
+		return meetingTimes;
+	}
+	public void setMeetingTimes(Bag<MeetingTime> meetingTimes) {
+		this.meetingTimes = meetingTimes;
+	}
+
+	public String getInstructor() {
+		return instructor;
+	}
+	public void setInstructor(String instructor) {
+		this.instructor = instructor;
+	}
+
+	public Bag<String> getTextbooks() {
+		return textbooks;
+	}
+	public void setTextbooks(Bag<String> textbooks) {
+		this.textbooks = textbooks;
+	}
+
+	public SortedBag<String> getStudents() {
+		return students;
+	}
+	public void setStudents(SortedBag<String> students) {
+		this.students = students;
+	}
+
 	private String crn;
 	private String courseNumber;
 	private boolean isOnline;
