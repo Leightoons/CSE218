@@ -68,7 +68,7 @@ public class Course implements Comparable<Course>, Indexed<String>, Serializable
 	}
 
 	@Override
-	public String getIndex() {
+	public String getId() {
 		return courseNumber;
 	}
 }

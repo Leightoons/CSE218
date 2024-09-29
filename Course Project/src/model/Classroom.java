@@ -64,7 +64,7 @@ public class Classroom implements Comparable<Classroom>, Indexed<String>, Serial
 	}
 
 	@Override
-	public String getIndex() {
+	public String getId() {
 		return building+room;
 	}
 }

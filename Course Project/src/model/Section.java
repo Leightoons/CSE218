@@ -90,7 +90,7 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 		return crn.compareTo(other.crn);
 	}
 	@Override
-	public String getIndex() {
+	public String getId() {
 		return crn;
 	}
 	

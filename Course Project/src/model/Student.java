@@ -27,7 +27,8 @@ public class Student implements Comparable<Student>, Indexed<String>, Serializab
 	public void setName(Name name) {
 		this.name = name;
 	}
-
+	
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -56,10 +57,5 @@ public class Student implements Comparable<Student>, Indexed<String>, Serializab
 	@Override
 	public int compareTo(Student other) {
 		return id.compareTo(other.id);
-	}
-
-	@Override
-	public String getIndex() {
-		return id;
 	}
 }

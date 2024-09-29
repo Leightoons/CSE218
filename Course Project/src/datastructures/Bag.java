@@ -6,7 +6,7 @@ import java.util.function.*;
 
 public class Bag <E> implements Iterable<E>, Serializable {
 	private static final long serialVersionUID = 1L;
-	protected static final int CAPACITY_DEFAULT = 16;
+	protected static final int CAPACITY_DEFAULT = 8;
 	protected static final boolean ALLOWDUPES_DEFAULT = true;
 	
 	protected int size;
@@ -43,7 +43,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		}
 		return -1; //item not found
 	}
-	public int findIndex(E element) {
+	public int findElementIndex(E element) {
 		return findIndex(e -> element.equals(e));
 	}
 	
@@ -51,8 +51,8 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		int i = findIndex(filter);
 		return (i < 0)? null : array[i];
 	}
-	public E find(E element) {
-		int i = findIndex(element);
+	public E findElement(E element) {
+		int i = findElementIndex(element);
 		return (i < 0)? null : array[i];
 	}
 	
@@ -68,7 +68,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 
 	public boolean add(E element) {
 		if (!allowDuplicates) {
-			if (findIndex(element) >= 0) return false;
+			if (findElementIndex(element) >= 0) return false;
 		}
 		if (size >= array.length) {
 			resizeArray();
@@ -78,7 +78,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	}
 	
 	public boolean remove(E element) {
-		int i = findIndex(element);
+		int i = findElementIndex(element);
 		if (i < 0) return false;
 		array[i] = array[--size];
 		array[size] = null;

@@ -5,7 +5,7 @@ import java.util.*;
 
 import datastructures.*;
 
-public class Textbook implements Comparable<Textbook>, Indexed<String>, Serializable{
+public class Textbook implements Indexed<String>, Comparable<Textbook>, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String isbn;
@@ -35,13 +35,13 @@ public class Textbook implements Comparable<Textbook>, Indexed<String>, Serializ
 	}
 	
 	@Override
-	public int compareTo(Textbook other) {
-		return isbn.compareTo(other.isbn);
+	public String getId() {
+		return isbn;
 	}
 	
 	@Override
-	public String getIndex() {
-		return isbn;
+	public int compareTo(Textbook other) {
+		return isbn.compareTo(other.isbn);
 	}
 	
 }

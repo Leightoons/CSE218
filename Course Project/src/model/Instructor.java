@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import datastructures.*;
 
-public class Instructor implements Comparable<Instructor>, Serializable {
+public class Instructor implements Comparable<Instructor>, Indexed<String>, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Name name;
@@ -24,6 +24,7 @@ public class Instructor implements Comparable<Instructor>, Serializable {
 		this.name = name;
 	}
 
+	@Override
 	public String getId() {
 		return id;
 	}

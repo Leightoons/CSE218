@@ -7,6 +7,8 @@ import model.*;
 
 public class Utility {
 	
+	// Randomization
+	
 	public static String randomString(int length) {
 	    byte[] array = new byte[length];
 	    new Random().nextBytes(array);
@@ -30,5 +32,12 @@ public class Utility {
 		}
 		return new String(c);
 	}
+	
+	
+	
+	// Searching/Sorting
+	
+	
+	
 	
 }
