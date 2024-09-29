@@ -36,6 +36,10 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
 		}
 		return -1;
 	}
+	public E find(T id) {
+		int idx = findIndex(id);
+		return (idx >= 0)? array[idx] : null;
+	}
 	@Override
 	public int findElementIndex(E element) {
 		return findIndex(element.getId());

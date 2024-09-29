@@ -10,6 +10,11 @@ public class Textbook implements Indexed<String>, Comparable<Textbook>, Serializ
 	
 	private String isbn;
 	private String title;
+	
+	public Textbook(String isbn, String title) {
+		this.isbn = isbn;
+		this.title = title;
+	}
 
 	public String getIsbn() {
 		return isbn;
@@ -23,15 +28,6 @@ public class Textbook implements Indexed<String>, Comparable<Textbook>, Serializ
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null || getClass() != obj.getClass())
-			return false;
-		Textbook other = (Textbook) obj;
-		return isbn.equals(other.isbn) && title.equals(other.title);
 	}
 	
 	@Override

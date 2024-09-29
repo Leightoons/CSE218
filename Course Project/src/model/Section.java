@@ -22,6 +22,7 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 		this.crn = crn;
 		this.courseNumber = courseNumber;
 		this.isOnline = isOnline;
+		this.capacity = capacity;
 		this.room = room;
 		this.meetingTimes = new ArrayList<MeetingTime>();
 			for (MeetingTime mt : meetingTimes) this.meetingTimes.add(mt);

@@ -13,7 +13,7 @@ public class Classroom implements Comparable<Classroom>, Indexed<String>, Serial
 	private int capacity;
 	private boolean hasProjector;
 	
-	public Classroom(String room, String building, int capacity, boolean hasProjector) {
+	public Classroom(String building, String room, int capacity, boolean hasProjector) {
 		this.room = room;
 		this.building = building;
 		this.capacity = capacity;
@@ -65,6 +65,6 @@ public class Classroom implements Comparable<Classroom>, Indexed<String>, Serial
 
 	@Override
 	public String getId() { //this should be changed later
-		return building+room;
+		return building + "_" + room;
 	}
 }

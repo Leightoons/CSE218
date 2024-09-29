@@ -1,6 +1,7 @@
 package utility;
 
 import java.nio.charset.*;
+import java.time.*;
 import java.util.*;
 
 import model.*;
@@ -13,6 +14,13 @@ public class Utility {
 	    byte[] array = new byte[length];
 	    new Random().nextBytes(array);
 	    return new String(array, Charset.forName("UTF-8"));
+	}
+	public static String randomString(int minLength, int maxLength) {
+		return randomString(randomInt(minLength, maxLength));
+	}
+	
+	public static int randomInt(int min, int max) {
+		return min + (int) (Math.random()*(max-min+1));
 	}
 	
 	@SafeVarargs
@@ -33,6 +41,9 @@ public class Utility {
 		return new String(c);
 	}
 	
+	public static LocalTime randomTime() {
+		return LocalTime.of(randomInt(0,23), randomInt(0,59));
+	}
 	
 	
 	// Searching/Sorting

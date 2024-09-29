@@ -9,11 +9,11 @@ import utility.*;
 public class Main {
 
 	public static void main(String[] args) {
-		//testIndexedBag();
-		testSearch();
+		generateDummyData(1);
+		
 	}
 	
-	public static void testIndexedBag() {
+	public static void test1() {
 		IndexedBag<Student, String> bag = new IndexedBag<>(1, true, true);
 		for (int i = 0; i < 20; i++) {
 			Student s = DummyData.generateStudent();
@@ -27,8 +27,7 @@ public class Main {
 			System.out.println(s.getId());
 	}
 
-	
-	public static void testSearch() {
+	public static void test2() {
 		ArrayList<IndexedPair<Integer, Integer>> list = new ArrayList<>();
 		Random rand = new Random();
 		
@@ -41,11 +40,25 @@ public class Main {
 			bag.add(ip);
 			System.out.println(ip);
 		}
-		
 		System.out.println("\n\n------------------------\n\n");
-		
 		for (IndexedPair ip : bag)
 			System.out.println(ip);
 		
 	}
+	
+	public static void generateDummyData(int n) {
+		DataCenter dc = DataCenter.getInstance();
+		
+		for (int i = 0; i < n; i++) {
+			dc.addClassroom(DummyData.generateClassroom());
+			dc.addTextbook(DummyData.generateTextbook());
+			dc.addInstructor(DummyData.generateInstructor());
+			dc.addStudent(DummyData.generateStudent());
+			dc.addCourse(DummyData.generateCourse());
+			dc.addSection(DummyData.generateSection());
+		}
+
+		DataCenter.saveToFile();
+	}
+	
 }

@@ -54,6 +54,11 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		return (i < 0)? null : array[i];
 	}
 	
+	public E getRandomElement() {
+		int r = (int)(Math.random()*size);
+		return array[r];
+	}
+	
 	protected boolean resizeArray(int newSize) {
 		if (newSize <= size || newSize == array.length) return false;
 		E[] newArray = Arrays.copyOf(array, newSize);
@@ -88,7 +93,11 @@ public class Bag <E> implements Iterable<E>, Serializable {
 		return remove(element);
 	}
 	
-	public E[] toArray() {
+	public int getSize() {
+		return size;
+	}
+	
+	public Object[] toArray() {
 		return Arrays.copyOf(array, size);
 	}
 	

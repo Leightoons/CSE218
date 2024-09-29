@@ -1,7 +1,9 @@
 package utility;
 
+import java.time.*;
 import java.util.*;
 
+import app.DataCenter;
 import datastructures.*;
 import model.*;
 
@@ -22,7 +24,7 @@ public class DummyData {
 		return new Course(
 				Utility.randomString(6),
 				Utility.randomNumberString(8),
-				Utility.randomString((int)(Math.random()* 65)),
+				Utility.randomString(10,100),
 				new Random().nextDouble(0, 8.0),
 				Utility.choose(Major.values())
 		);
@@ -45,19 +47,34 @@ public class DummyData {
 	}
 	
 	public static Section generateSection() {
+		DataCenter dc = DataCenter.getInstance();
 		return new Section(
 				Utility.randomNumberString(8),
-				Utility.randomNumberString(8),
+				Utility.choose(dc.getCourses().getRandomElement().getCourseNumber()),
 				Utility.randomBoolean(),
-				new Random().nextInt(12, 33),
-				null, //GET CLASSROOM
-				null, //GET MEETING TIMES
-				null, //GET INSTRUCTOR
-				null //GET TEXTBOOKS
+				Utility.randomInt(16, 32),
+				(Classroom)Utility.choose(dc.getClassrooms().toArray()),
+				new MeetingTime[]{generateMeetingTime()},
+				(Instructor)Utility.choose(dc.getInstructors().toArray()),
+				new Textbook[]{(Textbook)Utility.choose(dc.getTextbooks().toArray())}
 		);	
 	}
 	
+	public static Textbook generateTextbook() {
+		return new Textbook(
+				Utility.randomNumberString(8),
+				Utility.randomString(4,16)
+		);
+	}
 	
-	
+	public static MeetingTime generateMeetingTime() {
+		LocalTime[] t = new LocalTime[]{Utility.randomTime(), Utility.randomTime()};
+		if (t[0].compareTo(t[1]) > 0) {
+			LocalTime temp = t[1];
+			t[1] = t[0];
+			t[0] = temp;
+		}
+		return new MeetingTime(t[0], t[1], Utility.choose(DayOfWeek.values()));
+	}
 	
 }
