@@ -12,30 +12,24 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
  	public IndexedBag(boolean allowDuplicates) {
 		this(allowDuplicates, false);
 	}
-	public IndexedBag(E[] array) {
-		this(array, ALLOWDUPES_DEFAULT, false);
-	}
 	public IndexedBag(int capacity, boolean allowDuplicates) {
 		this(capacity, allowDuplicates, false);
 	}
 	public IndexedBag(int capacity) {
 		this(capacity, ALLOWDUPES_DEFAULT, false);
 	}
-	public IndexedBag() {
-		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
-	}
 	public IndexedBag(boolean allowDuplicates, boolean sortReverse) {
 		this(CAPACITY_DEFAULT, allowDuplicates, false);
 	}
-	public IndexedBag(E[] array, boolean allowDuplicates, boolean sortReverse) {
+	public IndexedBag() {
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
 	}
 	
 	public int findIndex(T id) {
-		int low = 0, high = size;
-		while (low < high) {
+		int low = 0, high = size-1;
+		while (low <= high) {
 			int mid = (high+low)/2;
-			int comp = id.compareTo(array[mid].getId()) * (sortReverse? -1 : 1);
+			int comp = id.compareTo(array[mid].getId());
 			if (comp == 0) return mid;
 			else if (comp > 0) high = mid - 1;
 			else low = mid + 1;
@@ -48,7 +42,7 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
 	}
 	
 	private int findTargetIndex(T id) {
-		int low = 0, high = size;
+		int low = 0, high = size-1;
 		while (low < high) {
 			int mid = (high+low)/2;
 			int comp = id.compareTo(array[mid].getId()) * (sortReverse? -1 : 1);

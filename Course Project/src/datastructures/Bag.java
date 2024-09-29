@@ -31,9 +31,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	}
 	public Bag(E[] array) {
 		this(array.length);
-		for (int i = 0; i < array.length; i++) {
-			this.array[i] = array[i];
-		}
+		for (int i = 0; i < array.length; i++) {add(array[i]);}
 	}
 	
 	public int findIndex(Predicate<E> filter) {

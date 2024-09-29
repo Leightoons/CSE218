@@ -1,6 +1,7 @@
 package model;
 
-import java.io.Serializable;
+import java.io.*;
+import java.util.*;
 
 import datastructures.*;
 
@@ -9,12 +10,12 @@ public class Instructor implements Comparable<Instructor>, Indexed<String>, Seri
 
 	private Name name;
 	private String id;
-	private Bag<Section> currentSections;
+	private ArrayList<String> currentSections;
 	
 	public Instructor(Name name, String id) {
 		this.name = name;
 		this.id = id;
-		currentSections = new Bag<Section>(false);
+		currentSections = new ArrayList<String>();
 	}
 
 	public Name getName() {
@@ -32,7 +33,7 @@ public class Instructor implements Comparable<Instructor>, Indexed<String>, Seri
 		this.id = id;
 	}
 
-	public Bag<Section> getCurrentSections() {
+	public ArrayList<String> getCurrentSections() {
 		return currentSections;
 	}
 	

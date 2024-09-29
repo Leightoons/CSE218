@@ -9,7 +9,7 @@ public class MeetingTime implements Serializable {
 	private LocalTime endTime;
 	private DayOfWeek weekday;
 	
-	public enum TimeSegment {
+	public enum TimeSegment { //not yet used
 		EARLYMORNING,
 		MORNING,
 		AFTERNOON,

@@ -56,7 +56,7 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 	@Override
 	public boolean add(E element) {
 		if (!allowDuplicates) {
-			if (findIndex(element) >= 0) return false;
+			if (findElementIndex(element) >= 0) return false;
 		}
 		int targetIdx = findTargetIndex(element);
 		shiftElementsUp(targetIdx);
@@ -67,7 +67,7 @@ public class SortedBag<E extends Object & Comparable<E>> extends Bag<E> {
 	
 	@Override
 	public boolean remove(E element) {
-		int i = findIndex(element);
+		int i = findElementIndex(element);
 		if (i < 0) return false;
 		System.arraycopy(array, i+1, array, i, size-i);
 		array[size--] = null;
