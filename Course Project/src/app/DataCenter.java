@@ -12,7 +12,6 @@ public class DataCenter implements Serializable {
 	private static final String FILEPATH = System.getProperty("user.dir")+"/dataCenter.dat";
 	private static DataCenter instance = null;
 	
-	// bags could be replaced with hashmaps for easier matching with crns/ids
 	private IndexedBag<Course,String> courses;
 	private IndexedBag<Section,String> sections;
 	private IndexedBag<Textbook,String> textbooks;
@@ -52,7 +51,7 @@ public class DataCenter implements Serializable {
 		}
 		return false;
 	}
-	
+
 	public static boolean loadFromFile() {
 		File file = new File(FILEPATH);
 		if (!file.exists()) return false;

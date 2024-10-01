@@ -19,6 +19,14 @@ public class Utility {
 		return randomString(randomInt(minLength, maxLength));
 	}
 	
+	public static String randomNumberString(int length) {
+		char[] c = new char[length];
+		for (int i = 0; i < c.length; i++) {
+			c[i] = (char)(48 + (Math.random()*10));
+		}
+		return new String(c);
+	}
+	
 	public static int randomInt(int min, int max) {
 		return min + (int) (Math.random()*(max-min+1));
 	}
@@ -31,14 +39,6 @@ public class Utility {
 	
 	public static boolean randomBoolean() {
 		return Utility.choose(0, 1) == 1;
-	}
-	
-	public static String randomNumberString(int length) {
-		char[] c = new char[length];
-		for (int i = 0; i < c.length; i++) {
-			c[i] = (char)(48 + (Math.random()*10));
-		}
-		return new String(c);
 	}
 	
 	public static LocalTime randomTime() {
