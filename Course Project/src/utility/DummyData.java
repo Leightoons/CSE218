@@ -25,7 +25,7 @@ public class DummyData {
 				Utility.randomString(6),
 				Utility.randomNumberString(8),
 				Utility.randomString(10,100),
-				new Random().nextDouble(0, 8.0),
+				new Random().nextDouble(1.0, 8.0),
 				Utility.choose(Major.values())
 		);
 	}
@@ -33,14 +33,14 @@ public class DummyData {
 	public static Instructor generateInstructor() {
 		return new Instructor(
 				new Name(Utility.choose(NAMES), Utility.choose(NAMES)),
-				Utility.randomNumberString(8)
+				Utility.randomNumberString(DataCenter.STUDENTID_LENGTH)
 		);
 	}
 	
 	public static Student generateStudent() {
 		return new Student(
 				new Name(Utility.choose(NAMES), Utility.choose(NAMES)),
-				Utility.randomNumberString(8),
+				Utility.randomNumberString(DataCenter.STUDENTID_LENGTH),
 				Utility.choose(Major.values()),
 				new Random().nextDouble(0, 4.0)
 		);
@@ -62,7 +62,7 @@ public class DummyData {
 	
 	public static Textbook generateTextbook() {
 		return new Textbook(
-				Utility.randomNumberString(8),
+				Utility.randomNumberString(13),
 				Utility.randomString(4,16)
 		);
 	}

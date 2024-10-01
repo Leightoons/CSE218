@@ -13,7 +13,10 @@ import utility.*;
 public class Main extends Application {
 
 	public static void main(String[] args) {
-		launch(args);
+		DataCenter dc = DataCenter.getInstance();
+		//launch(args);
+		test3();
+		DataCenter.saveToFile();
 	}
 	
 	@Override
@@ -23,7 +26,7 @@ public class Main extends Application {
 		Pane root = new Pane();
 		Scene scene = new Scene(root, 640, 480);
 		stage.setScene(scene);
-		stage.show();
+		//stage.show();
 		
 	}
 	
@@ -75,6 +78,18 @@ public class Main extends Application {
 		DataCenter.saveToFile();
 	}
 
+	
+	public static void test3() {
+		ArrayList<String> list = new ArrayList<>();
+		DataCenter dc = DataCenter.getInstance();
+		for (int i = 0; i < 5; i++) {
+			Student s = DummyData.generateStudent();
+			s.setId(dc.generateUniqueStudentId());
+			dc.addStudent(s);
+			list.add(s.getId());
+		}
+		System.out.println(list.toString());
+	}
 	
 	
 }

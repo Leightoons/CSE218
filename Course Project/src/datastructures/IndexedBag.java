@@ -25,6 +25,14 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
 	}
 	
+	
+	public boolean contains(T id) {
+		return findIndex(id) >= 0;
+	}
+	public boolean containsElement(E element) {
+		return findElementIndex(element) >= 0;
+	}
+	
 	public int findIndex(T id) {
 		int low = 0, high = size-1;
 		while (low <= high) {

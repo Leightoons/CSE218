@@ -6,11 +6,18 @@ import java.util.function.*;
 
 import datastructures.*;
 import model.*;
+import utility.Utility;
 
 public class DataCenter implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final String FILEPATH = System.getProperty("user.dir")+"/dataCenter.dat";
+	public static final int STUDENTID_LENGTH = 12;
+	public static final int INSTRUCTORID_LENGTH = 12;
+	
 	private static DataCenter instance = null;
+	
+	private Long studentIdSeq;
+	private Long instructorIdSeq;
 	
 	private IndexedBag<Course,String> courses;
 	private IndexedBag<Section,String> sections;
@@ -20,8 +27,10 @@ public class DataCenter implements Serializable {
 	private IndexedBag<Classroom,String> classrooms;
 	
 	
-	
 	private DataCenter() {
+		studentIdSeq = 1L;
+		instructorIdSeq = 1L;
+		
 		courses = new IndexedBag<>(false, false);
 		sections = new IndexedBag<>(false, false);
 		textbooks = new IndexedBag<>(false, false);
@@ -31,6 +40,7 @@ public class DataCenter implements Serializable {
 	}
 	
 	public static DataCenter getInstance() {
+		
 		if (instance == null)
 			if (!loadFromFile())
 				instance = new DataCenter();
@@ -70,7 +80,24 @@ public class DataCenter implements Serializable {
 		return false;
 	}
 	
-	// these methods might be removed later for security
+	
+	private String generateUniqueId(Long seq, int length, IndexedBag<?,String> bag) {
+		boolean isUnique = false;
+		String temp = "";
+		while (!isUnique) {
+			temp = Utility.longToString(seq++, length);
+			isUnique = !bag.contains(temp);
+		}
+		return temp;
+	}
+	public String generateUniqueStudentId() {
+		return generateUniqueId(studentIdSeq, STUDENTID_LENGTH, students);
+	}
+	public String generateUniqueInstructorId() {
+		return generateUniqueId(instructorIdSeq, INSTRUCTORID_LENGTH, instructors);
+	}
+
+	
 	public IndexedBag<Course, String> getCourses() {
 		return courses;
 	}

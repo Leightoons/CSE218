@@ -4,6 +4,7 @@ import java.nio.charset.*;
 import java.time.*;
 import java.util.*;
 
+import app.DataCenter;
 import model.*;
 
 public class Utility {
@@ -46,7 +47,15 @@ public class Utility {
 	}
 	
 	
-	// Searching/Sorting
+	
+	// Generating/Converting Data
+	
+	public static String longToString(long value, int length) {
+		String s =  String.valueOf(value);
+		return ("0".repeat(length)+s).substring(s.length());
+	}
+	
+	
 	
 	
 	
