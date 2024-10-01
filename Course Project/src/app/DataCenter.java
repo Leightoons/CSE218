@@ -19,6 +19,8 @@ public class DataCenter implements Serializable {
 	private IndexedBag<Instructor,String> instructors;
 	private IndexedBag<Classroom,String> classrooms;
 	
+	
+	
 	private DataCenter() {
 		courses = new IndexedBag<>(false, false);
 		sections = new IndexedBag<>(false, false);

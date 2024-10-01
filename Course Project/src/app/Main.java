@@ -3,14 +3,27 @@ package app;
 import java.util.*;
 
 import datastructures.*;
+import javafx.application.*;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
 import model.*;
 import utility.*;
 
-public class Main {
+public class Main extends Application {
 
 	public static void main(String[] args) {
-		generateDummyData(1);
+		launch(args);
+	}
+	
+	@Override
+	public void start(Stage stage) throws Exception {
+		stage.setTitle("Course Registration App");
 		
+		Pane root = new Pane();
+		Scene scene = new Scene(root, 640, 480);
+		stage.setScene(scene);
+		stage.show();
 		
 	}
 	
@@ -61,5 +74,7 @@ public class Main {
 
 		DataCenter.saveToFile();
 	}
+
+	
 	
 }
