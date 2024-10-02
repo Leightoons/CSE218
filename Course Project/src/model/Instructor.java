@@ -10,12 +10,12 @@ public class Instructor implements Comparable<Instructor>, Indexed<String>, Seri
 
 	private Name name;
 	private String id;
-	private ArrayList<String> currentSections;
+	private Bag<String> currentSections;
 	
 	public Instructor(Name name, String id) {
 		this.name = name;
 		this.id = id;
-		currentSections = new ArrayList<String>();
+		currentSections = new Bag<String>();
 	}
 
 	public Name getName() {
@@ -33,14 +33,14 @@ public class Instructor implements Comparable<Instructor>, Indexed<String>, Seri
 		this.id = id;
 	}
 
-	public ArrayList<String> getCurrentSections() {
+	public Bag<String> getCurrentSections() {
 		return currentSections;
 	}
 	
 	@Override
 	public String toString() {
 		return String.format("Instructor [name=%s, id=%s, currentSections=%s]",
-				name, id, currentSections.toArray().toString());
+				name, id, currentSections.toString());
 	}
 
 	@Override

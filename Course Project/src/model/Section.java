@@ -13,10 +13,10 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 	private boolean isOnline;
 	private int capacity;
 	private Classroom room;
-	private ArrayList<MeetingTime> meetingTimes;
+	private Bag<MeetingTime> meetingTimes;
 	private String instructor;
-	private ArrayList<String> textbooks;
-	private ArrayList<String> students;
+	private Bag<String> textbooks;
+	private Bag<String> students;
 	
 	public Section(String crn, String courseNumber, boolean isOnline, int capacity, Classroom room, MeetingTime[] meetingTimes, Instructor instructor, Textbook[] textbooks) {
 		this.crn = crn;
@@ -24,12 +24,12 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 		this.isOnline = isOnline;
 		this.capacity = capacity;
 		this.room = room;
-		this.meetingTimes = new ArrayList<MeetingTime>();
+		this.meetingTimes = new Bag<MeetingTime>();
 			for (MeetingTime mt : meetingTimes) this.meetingTimes.add(mt);
 		this.instructor = instructor.getId();
-		this.textbooks = new ArrayList<String>();
+		this.textbooks = new Bag<String>();
 			for (Textbook tb : textbooks) this.textbooks.add(tb.getIsbn());
-		this.students = new ArrayList<String>();
+		this.students = new Bag<String>();
 	}
 	
 	public String getCrn() {
@@ -67,7 +67,7 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 		this.room = room;
 	}
 
-	public ArrayList<MeetingTime> getMeetingTimes() {
+	public Bag<MeetingTime> getMeetingTimes() {
 		return meetingTimes;
 	}
 
@@ -78,11 +78,11 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 		this.instructor = instructor;
 	}
 
-	public ArrayList<String> getTextbooks() {
+	public Bag<String> getTextbooks() {
 		return textbooks;
 	}
 
-	public ArrayList<String> getStudents() {
+	public Bag<String> getStudents() {
 		return students;
 	}
 	
@@ -95,10 +95,9 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 	public String toString() {
 		return String.format(
 				"Section [crn=%s, courseNumber=%s, isOnline=%s, capacity=%s, room=%s, meetingTimes=%s, instructor=%s, textbooks=%s, students=%s]",
-				crn, courseNumber, String.valueOf(isOnline), capacity, room, meetingTimes.toArray().toString(), instructor, textbooks.toArray().toString(), students.toArray().toString());
+				crn, courseNumber, String.valueOf(isOnline), capacity, room, meetingTimes.toString(), instructor, textbooks.toString(), students.toString());
 	}
 	
-
 	@Override
 	public String getId() {
 		return crn;

@@ -28,6 +28,14 @@ public class Utility {
 		return new String(c);
 	}
 	
+	public static String randomLetterString(int length) {
+		char[] c = new char[length];
+		for (int i = 0; i < c.length; i++) {
+			c[i] = (char)('a' + (Math.random()*27));
+		}
+		return new String(c);
+	}
+	
 	public static int randomInt(int min, int max) {
 		return min + (int) (Math.random()*(max-min+1));
 	}
@@ -58,6 +66,51 @@ public class Utility {
 	
 	
 	
+	// Displaying/Printing Data
+	
+	public static void printDatabase() {
+		DataCenter dc = DataCenter.getInstance();
+		
+		System.out.println("Courses");
+		for (Course c : dc.getCourses())
+			System.out.println("   " + c.getTitle() + " " + c.getId());
+		
+		System.out.println("Sections");
+		for (Section s : dc.getSections())
+			System.out.println("   " + dc.findCourse(s.getCourseNumber()).getTitle() + " " + s.getId());
+		
+		System.out.println("Textbooks");
+		for (Textbook t : dc.getTextbooks())
+			System.out.println("   " + t.getTitle() + " " + t.getId());
+		
+		System.out.println("Students");
+		for (Student s : dc.getStudents())
+			System.out.println("   " + s.getName().toString() + " " + s.getId() + " " + s.getGpa());
+		
+		System.out.println("Instructors");
+		for (Instructor i : dc.getInstructors())
+			System.out.println("   " + i.getName().toString() + " " + i.getId());
+		
+		System.out.println("Classrooms");
+		for (Classroom c : dc.getClassrooms())
+			System.out.println("   " + c.getId());
+		
+		//System.out.println(dc.getCourses());
+		//System.out.println(dc.getSections());
+		//System.out.println(dc.getTextbooks());
+		//System.out.println(dc.getStudents());
+		//System.out.println(dc.getInstructors());
+		//System.out.println(dc.getClassrooms());
+		System.out.println();
+	}
+	
 	
 	
 }
+
+
+
+
+
+
+

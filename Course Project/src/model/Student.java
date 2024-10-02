@@ -12,14 +12,14 @@ public class Student implements Comparable<Student>, Indexed<String>, Serializab
 	private String id;
 	private Major major;
 	private double gpa;
-	private ArrayList<Section> currentSections;
+	private Bag<Section> currentSections;
 	
 	public Student(Name name, String id, Major major, double gpa) {
 		this.name = name;
 		this.id = id;
 		this.major = major;
 		this.gpa = gpa;
-		currentSections = new ArrayList<Section>();
+		currentSections = new Bag<Section>();
 	}
 	
 	public Name getName() {
@@ -51,14 +51,14 @@ public class Student implements Comparable<Student>, Indexed<String>, Serializab
 		this.gpa = gpa;
 	}
 	
-	public ArrayList<Section> getSections() {
+	public Bag<Section> getSections() {
 		return currentSections;
 	}
 	
 	@Override
 	public String toString() {
 		return String.format("Student [name=%s, id=%s, major=%s, gpa=%s, currentSections=%s]",
-				name, id, major, gpa, currentSections.toArray().toString());
+				name, id, major, gpa, currentSections.toString());
 	}
 
 	@Override

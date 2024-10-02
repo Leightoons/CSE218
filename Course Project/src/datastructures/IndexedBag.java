@@ -1,5 +1,7 @@
 package datastructures;
 
+import java.util.Arrays;
+
 public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Comparable<T>> extends Bag<E> {
 	private static final long serialVersionUID = 1L;
 	
@@ -95,4 +97,9 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("IndexedBag [%s]", Arrays.toString(toArray()));
+	}
+	
 }

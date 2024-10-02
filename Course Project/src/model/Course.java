@@ -13,7 +13,7 @@ public class Course implements Comparable<Course>, Indexed<String>, Serializable
 	private String desc;
 	private double credits;
 	private Major major;
-	private ArrayList<String> sections;
+	private Bag<String> sections;
 	
 	public Course(String title, String courseNumber, String desc, double credits, Major major) {
 		this.title = title;
@@ -21,6 +21,7 @@ public class Course implements Comparable<Course>, Indexed<String>, Serializable
 		this.desc = desc;
 		this.credits = credits;
 		this.major = major;
+		this.sections = new Bag<>();
 	}
 	
 	public String getTitle() {
@@ -58,7 +59,7 @@ public class Course implements Comparable<Course>, Indexed<String>, Serializable
 		this.major = major;
 	}
 	
-	public ArrayList<String> getSections() {
+	public Bag<String> getSections() {
 		return sections;
 	}
 	
@@ -71,7 +72,7 @@ public class Course implements Comparable<Course>, Indexed<String>, Serializable
 	public String toString() {
 		return String.format(
 				"Course [title=%s, courseNumber=%s, desc=%s, credits=%.2f, major=%s, sections=%s]",
-				title, courseNumber, desc, credits, major.label, getSections().toArray().toString());
+				title, courseNumber, desc, credits, major.label, getSections().toString());
 	}
 
 	@Override

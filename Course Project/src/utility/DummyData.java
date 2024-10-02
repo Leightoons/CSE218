@@ -23,7 +23,7 @@ public class DummyData {
 	
 	public static Course generateCourse() {
 		return new Course(
-				Utility.randomString(6),
+				Utility.randomLetterString(6),
 				Utility.randomNumberString(8),
 				Utility.randomString(10,100),
 				new Random().nextDouble(1.0, 8.0),
@@ -64,7 +64,7 @@ public class DummyData {
 	public static Textbook generateTextbook() {
 		return new Textbook(
 				Utility.randomNumberString(13),
-				Utility.randomString(4,16)
+				Utility.randomLetterString(8)
 		);
 	}
 	

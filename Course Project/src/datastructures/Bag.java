@@ -103,7 +103,7 @@ public class Bag <E> implements Iterable<E>, Serializable {
 	
 	@Override
 	public String toString() {
-		return String.format("Bag[%s]", Arrays.toString(toArray()));
+		return String.format("Bag [%s]", Arrays.toString(toArray()));
 	}
 	
 	private class BagIterator implements Iterator<E> {
