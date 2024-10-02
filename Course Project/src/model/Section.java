@@ -92,6 +92,14 @@ public class Section implements Comparable<Section>, Indexed<String>, Serializab
 	}
 	
 	@Override
+	public String toString() {
+		return String.format(
+				"Section [crn=%s, courseNumber=%s, isOnline=%s, capacity=%s, room=%s, meetingTimes=%s, instructor=%s, textbooks=%s, students=%s]",
+				crn, courseNumber, String.valueOf(isOnline), capacity, room, meetingTimes.toArray().toString(), instructor, textbooks.toArray().toString(), students.toArray().toString());
+	}
+	
+
+	@Override
 	public String getId() {
 		return crn;
 	}

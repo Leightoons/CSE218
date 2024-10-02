@@ -25,7 +25,6 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
 		this(CAPACITY_DEFAULT, ALLOWDUPES_DEFAULT, false);
 	}
 	
-	
 	public boolean contains(T id) {
 		return findIndex(id) >= 0;
 	}

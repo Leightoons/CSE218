@@ -68,6 +68,13 @@ public class Course implements Comparable<Course>, Indexed<String>, Serializable
 	}
 
 	@Override
+	public String toString() {
+		return String.format(
+				"Course [title=%s, courseNumber=%s, desc=%s, credits=%.2f, major=%s, sections=%s]",
+				title, courseNumber, desc, credits, major.label, getSections().toArray().toString());
+	}
+
+	@Override
 	public String getId() {
 		return courseNumber;
 	}

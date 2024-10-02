@@ -1,6 +1,7 @@
 package model;
 
 import java.io.*;
+import java.util.*;
 
 import datastructures.*;
 
@@ -11,14 +12,14 @@ public class Student implements Comparable<Student>, Indexed<String>, Serializab
 	private String id;
 	private Major major;
 	private double gpa;
-	private Bag<Section> currentSections;
+	private ArrayList<Section> currentSections;
 	
 	public Student(Name name, String id, Major major, double gpa) {
 		this.name = name;
 		this.id = id;
 		this.major = major;
 		this.gpa = gpa;
-		currentSections = new Bag<Section>(false);
+		currentSections = new ArrayList<Section>();
 	}
 	
 	public Name getName() {
@@ -50,10 +51,16 @@ public class Student implements Comparable<Student>, Indexed<String>, Serializab
 		this.gpa = gpa;
 	}
 	
-	public Bag<Section> getSections() {
+	public ArrayList<Section> getSections() {
 		return currentSections;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("Student [name=%s, id=%s, major=%s, gpa=%s, currentSections=%s]",
+				name, id, major, gpa, currentSections.toArray().toString());
+	}
+
 	@Override
 	public int compareTo(Student other) {
 		return id.compareTo(other.id);

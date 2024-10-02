@@ -96,7 +96,7 @@ public class DataCenter implements Serializable {
 	public String generateUniqueInstructorId() {
 		return generateUniqueId(instructorIdSeq, INSTRUCTORID_LENGTH, instructors);
 	}
-
+	
 	
 	public IndexedBag<Course, String> getCourses() {
 		return courses;

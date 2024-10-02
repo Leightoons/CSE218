@@ -38,6 +38,12 @@ public class Instructor implements Comparable<Instructor>, Indexed<String>, Seri
 	}
 	
 	@Override
+	public String toString() {
+		return String.format("Instructor [name=%s, id=%s, currentSections=%s]",
+				name, id, currentSections.toArray().toString());
+	}
+
+	@Override
 	public int compareTo(Instructor other) {
 		return id.compareTo(other.id);
 	}

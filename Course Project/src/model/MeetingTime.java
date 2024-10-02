@@ -14,6 +14,7 @@ public class MeetingTime implements Serializable {
 		MORNING,
 		AFTERNOON,
 		EVENING
+		;
 	}
 	
 	public MeetingTime(LocalTime startTime, LocalTime endTime, DayOfWeek weekday) {
@@ -54,6 +55,11 @@ public class MeetingTime implements Serializable {
 			return false;
 		MeetingTime other = (MeetingTime) obj;
 		return weekday.equals(other.weekday) && startTime.equals(other.startTime) && endTime.equals(other.endTime);
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("MeetingTime [%s - %s, %s]", startTime, endTime, weekday.name());
 	}
 	
 	public boolean isConflicting(MeetingTime other) {

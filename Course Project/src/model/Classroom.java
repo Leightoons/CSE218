@@ -64,6 +64,12 @@ public class Classroom implements Comparable<Classroom>, Indexed<String>, Serial
 	}
 
 	@Override
+	public String toString() {
+		return String.format("Classroom [room=%s, building=%s, capacity=%s, hasProjector=%s]",
+				room, building, capacity, String.valueOf(hasProjector));
+	}
+
+	@Override
 	public String getId() { //this should be changed later
 		return building + "_" + room;
 	}

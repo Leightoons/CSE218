@@ -11,6 +11,7 @@ public class DummyData {
 	public static final String[] BUILDINGS = new String[]{"RH","SH","SS","IA","BS"};
 	public static final String[] NAMES  = new String[]{"Dan","Ted","Ben","Jeff","Pat","Mia","Amy","Bob","Ana","Eve"};
 	
+	
 	public static Classroom generateClassroom() {
 		return new Classroom(
 				Utility.choose(BUILDINGS),

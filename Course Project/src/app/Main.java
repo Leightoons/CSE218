@@ -14,8 +14,7 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		DataCenter dc = DataCenter.getInstance();
-		//launch(args);
-		test3();
+		launch(args);
 		DataCenter.saveToFile();
 	}
 	
@@ -26,7 +25,7 @@ public class Main extends Application {
 		Pane root = new Pane();
 		Scene scene = new Scene(root, 640, 480);
 		stage.setScene(scene);
-		//stage.show();
+		stage.show();
 		
 	}
 	
@@ -78,7 +77,6 @@ public class Main extends Application {
 		DataCenter.saveToFile();
 	}
 
-	
 	public static void test3() {
 		ArrayList<String> list = new ArrayList<>();
 		DataCenter dc = DataCenter.getInstance();

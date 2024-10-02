@@ -36,6 +36,11 @@ public class Textbook implements Indexed<String>, Comparable<Textbook>, Serializ
 	}
 	
 	@Override
+	public String toString() {
+		return String.format("Textbook [isbn=%s, title=%s]", isbn, title);
+	}
+
+	@Override
 	public int compareTo(Textbook other) {
 		return isbn.compareTo(other.isbn);
 	}

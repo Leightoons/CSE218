@@ -41,4 +41,14 @@ public class Name implements Serializable {
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+	
+	@Override
+	public String toString() {
+		String s = firstName;
+		if (middleName != null && middleName.length()>0) s += " " + middleName;
+		if (lastName != null && lastName.length()>0) s += " " + lastName;
+		return s;
+	}
+	
+	
 }
