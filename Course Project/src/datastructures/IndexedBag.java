@@ -96,10 +96,5 @@ public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Compar
 		array[size--] = null;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return String.format("IndexedBag [%s]", Arrays.toString(toArray()));
-	}
 	
 }

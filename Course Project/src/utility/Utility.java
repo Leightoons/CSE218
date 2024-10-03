@@ -73,27 +73,33 @@ public class Utility {
 		
 		System.out.println("Courses");
 		for (Course c : dc.getCourses())
-			System.out.println("   " + c.getTitle() + " " + c.getId());
+			//System.out.println("   " + c.getTitle() + " " + c.getId());
+			System.out.println(" " + c.toString());
 		
 		System.out.println("Sections");
 		for (Section s : dc.getSections())
-			System.out.println("   " + dc.findCourse(s.getCourseNumber()).getTitle() + " " + s.getId());
+			//System.out.println("   " + dc.findCourse(s.getCourseNumber()).getTitle() + " " + s.getId());
+			System.out.println(" " + s.toString());
 		
 		System.out.println("Textbooks");
 		for (Textbook t : dc.getTextbooks())
-			System.out.println("   " + t.getTitle() + " " + t.getId());
+			//System.out.println("   " + t.getTitle() + " " + t.getId());
+			System.out.println(" " + t.toString());
 		
 		System.out.println("Students");
 		for (Student s : dc.getStudents())
-			System.out.println("   " + s.getName().toString() + " " + s.getId() + " " + s.getGpa());
+			//System.out.println("   " + s.getName().toString() + " " + s.getId() + " " + s.getGpa());
+			System.out.println(" " + s.toString());
 		
 		System.out.println("Instructors");
 		for (Instructor i : dc.getInstructors())
-			System.out.println("   " + i.getName().toString() + " " + i.getId());
+			//System.out.println("   " + i.getName().toString() + " " + i.getId());
+			System.out.println(" " + i.toString());
 		
 		System.out.println("Classrooms");
 		for (Classroom c : dc.getClassrooms())
-			System.out.println("   " + c.getId());
+			//System.out.println("   " + c.getId());
+			System.out.println(" " + c.toString());
 		
 		//System.out.println(dc.getCourses());
 		//System.out.println(dc.getSections());
