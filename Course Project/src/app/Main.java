@@ -1,5 +1,4 @@
 package app;
-
 import java.util.*;
 
 import datastructures.*;
@@ -15,9 +14,10 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		DataCenter dc = DataCenter.getInstance();
 		//generateDummyData(3);
-		Utility.printDatabase();
+		//Utility.printDatabase();
 		launch(args);
 		DataCenter.saveToFile();
+		
 	}
 	
 	@Override

@@ -2,41 +2,19 @@ package model;
 import java.io.*;
 import java.time.*;
 
-public class MeetingTime implements Serializable {
+public class MeetingTime extends TimeRange implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private LocalTime startTime;
-	private LocalTime endTime;
 	private DayOfWeek weekday;
 	
-	public enum TimeSegment { //not yet used
-		EARLYMORNING,
-		MORNING,
-		AFTERNOON,
-		EVENING
-		;
-	}
-	
 	public MeetingTime(LocalTime startTime, LocalTime endTime, DayOfWeek weekday) {
-		this.startTime = startTime;
-		this.endTime = endTime;
+		super(startTime, endTime);
 		this.weekday = weekday;
 	}
-
-	public LocalTime getStartTime() {
-		return startTime;
+	public MeetingTime(int startHour, int startMinute, int endHour, int endMinute, DayOfWeek weekday) {
+		this(LocalTime.of(startHour, startMinute), LocalTime.of(endHour, endMinute), weekday);
 	}
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
-
-	public LocalTime getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
-
+	
 	public DayOfWeek getWeekday() {
 		return weekday;
 	}
@@ -44,32 +22,18 @@ public class MeetingTime implements Serializable {
 		this.weekday = weekday;
 	}
 	
-	public Duration getDuration() {
-		return Duration.between(startTime, endTime);
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null || getClass() != obj.getClass())
-			return false;
-		MeetingTime other = (MeetingTime) obj;
-		return weekday.equals(other.weekday) && startTime.equals(other.startTime) && endTime.equals(other.endTime);
+		return super.equals(obj) && weekday.equals(((MeetingTime)obj).weekday);
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("MeetingTime [%s - %s, %s]", startTime, endTime, weekday.name());
+		return String.format("MeetingTime [%s - %s, %s]", getStartTime(), getEndTime(), weekday.name());
 	}
 	
-	public boolean isConflicting(MeetingTime other) {
-		if (!weekday.equals(other.weekday)) return false;
-		int comp = startTime.compareTo(other.startTime);
-		if (comp == 0) return true;
-		MeetingTime[] times = new MeetingTime[2];
-		times[0] = (comp < 0)? this : other;
-		times[1] = (comp < 0)? other : this;
-		return times[0].endTime.compareTo(times[1].startTime) > 0;
+	public boolean isOverlapping(MeetingTime other) {
+		return weekday.equals(other.weekday) && isOverlapping(other);
 	}
 	
 	
