@@ -21,7 +21,7 @@ public class IndexedPair<E extends Object, T extends Object & Comparable<T>> imp
 	
 	@Override
 	public String toString() {
-		return "[id: " + id + ", value: " + value + "]";
+		return "[id=" + id + ", value=" + value + "]";
 	}
 	
 }

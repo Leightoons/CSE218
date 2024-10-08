@@ -8,25 +8,25 @@ import javafx.scene.layout.*;
 import javafx.stage.*;
 import model.*;
 import utility.*;
+import view.*;
 
 public class Main extends Application {
-
+	private GuiController guiController = null;
+	
 	public static void main(String[] args) {
 		DataCenter dc = DataCenter.getInstance();
 		//generateDummyData(3);
 		//Utility.printDatabase();
 		launch(args);
-		DataCenter.saveToFile();
-		
+		//DataCenter.saveToFile();
 	}
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("Course Registration App");
+		guiController = new GuiController(stage);
+		guiController.initializeStage();
 		
-		Pane root = new Pane();
-		Scene scene = new Scene(root, 640, 480);
-		stage.setScene(scene);
+		stage.setScene(new Scene(new Pane(), 640, 480));
 		stage.show();
 		
 	}

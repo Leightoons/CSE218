@@ -40,7 +40,6 @@ public class DataCenter implements Serializable {
 	}
 	
 	public static DataCenter getInstance() {
-		
 		if (instance == null)
 			if (!loadFromFile())
 				instance = new DataCenter();
