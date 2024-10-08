@@ -16,7 +16,7 @@ public class Main extends Application {
 		DataCenter dc = DataCenter.getInstance();
 		//generateDummyData(3);
 		Utility.printDatabase();
-		//launch(args);
+		launch(args);
 		DataCenter.saveToFile();
 	}
 	

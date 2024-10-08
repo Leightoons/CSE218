@@ -27,6 +27,9 @@ public class Utility {
 		}
 		return new String(c);
 	}
+	public static String randomNumberString(int minLength, int maxLength) {
+		return randomNumberString(randomInt(minLength, maxLength));
+	}
 	
 	public static String randomLetterString(int length) {
 		char[] c = new char[length];
@@ -34,6 +37,9 @@ public class Utility {
 			c[i] = (char)('a' + (Math.random()*27));
 		}
 		return new String(c);
+	}
+	public static String randomLetterString(int minLength, int maxLength) {
+		return randomLetterString(randomInt(minLength, maxLength));
 	}
 	
 	public static int randomInt(int min, int max) {
