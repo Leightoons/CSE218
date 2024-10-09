@@ -26,9 +26,12 @@ public class Main extends Application {
 		guiController = new GuiController(stage);
 		guiController.initializeStage();
 		
-		stage.setScene(new Scene(new Pane(), 640, 480));
-		stage.show();
 		
+	}
+	
+	@Override
+	public void stop() {
+		DataCenter.saveToFile();
 	}
 	
 	public static void test1() {
@@ -66,7 +69,6 @@ public class Main extends Application {
 	
 	public static void generateDummyData(int n) {
 		DataCenter dc = DataCenter.getInstance();
-		
 		for (int i = 0; i < n; i++) {
 			dc.addClassroom(DummyData.generateClassroom());
 			dc.addTextbook(DummyData.generateTextbook());
@@ -75,8 +77,6 @@ public class Main extends Application {
 			dc.addCourse(DummyData.generateCourse());
 			dc.addSection(DummyData.generateSection());
 		}
-
-		DataCenter.saveToFile();
 	}
 
 	public static void test3() {

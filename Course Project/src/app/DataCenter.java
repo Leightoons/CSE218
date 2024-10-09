@@ -19,15 +19,16 @@ public class DataCenter implements Serializable {
 	private Long studentIdSeq;
 	private Long instructorIdSeq;
 	
-	private IndexedBag<Course,String> courses;
-	private IndexedBag<Section,String> sections;
-	private IndexedBag<Textbook,String> textbooks;
-	private IndexedBag<Student,String> students;
-	private IndexedBag<Instructor,String> instructors;
-	private IndexedBag<Classroom,String> classrooms;
+	private IndexedBag<Course, String> courses;
+	private IndexedBag<Section, String> sections;
+	private IndexedBag<Textbook, String> textbooks;
+	private IndexedBag<Student, String> students;
+	private IndexedBag<Instructor, String> instructors;
+	private IndexedBag<Classroom, String> classrooms;
 	
 	
 	private DataCenter() {
+		System.out.println("Reinitializing DataCenter");
 		studentIdSeq = 1L;
 		instructorIdSeq = 1L;
 		
@@ -55,27 +56,32 @@ public class DataCenter implements Serializable {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
 			out.writeObject(getInstance());
 			out.flush();
+			System.out.printf("DataCenter saved successfully to %s\n", FILEPATH);
 			return true;
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.printf("Failed to save DataCenter to %s\n", FILEPATH);
 		return false;
 	}
 
 	public static boolean loadFromFile() {
 		File file = new File(FILEPATH);
-		if (!file.exists()) return false;
-		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))){
-			DataCenter dc = (DataCenter)(in.readObject());
-			if (dc != null && dc.getClass() == DataCenter.class) {
-				instance = dc;
-				return true;
+		if (file.exists()){
+			try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))){
+				DataCenter dc = (DataCenter)(in.readObject());
+				if (dc != null && dc.getClass() == DataCenter.class) {
+					instance = dc;
+					System.out.printf("DataCenter loaded successfully from %s\n", FILEPATH);
+					return true;
+				}
+			}
+			catch (IOException | ClassNotFoundException e) {
+				e.printStackTrace();
 			}
 		}
-		catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		System.out.printf("DataCenter could not be loaded from %s\n", FILEPATH);
 		return false;
 	}
 	

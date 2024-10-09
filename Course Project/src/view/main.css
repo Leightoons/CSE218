@@ -1,5 +1,14 @@
 .global {
+	-fx-padding: 10 10 10 10;
 	-fx-font-size: 12pt;
 	-fx-font-family: "Comic Sans MS";
 	-fx-padding: 10px;
+	-fx-background-color: navajowhite;
+}
+
+.title_text {
+	-fx-font-size: 24pt;
+	-fx-font-family: "Comic Sans MS";
+	-fx-padding: 20 20 20 20;
+	-fx-alignment: center;
 }
