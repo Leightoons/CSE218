@@ -2,7 +2,7 @@ package datastructures;
 
 import java.util.Arrays;
 
-public class IndexedBag<E extends Object & Indexed<T>, T extends Object & Comparable<T>> extends Bag<E> {
+public class IndexedBag<E extends Indexed<T>, T extends Comparable<T>> extends Bag<E> {
 	private static final long serialVersionUID = 1L;
 	
 	private boolean sortReverse;

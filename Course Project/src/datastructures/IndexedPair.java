@@ -5,7 +5,7 @@ package datastructures;
  * @param <E>
  * @param <T>
  */
-public class IndexedPair<E extends Object, T extends Object & Comparable<T>> implements Indexed<T>{
+public class IndexedPair<E, T extends Comparable<T>> implements Indexed<T>{
 	public E value;
 	public T id;
 	
