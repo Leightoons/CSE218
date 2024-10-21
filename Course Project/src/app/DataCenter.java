@@ -19,12 +19,12 @@ public class DataCenter implements Serializable {
 	private Long studentIdSeq;
 	private Long instructorIdSeq;
 	
-	private IndexedBag<Course, String> courses;
-	private IndexedBag<Section, String> sections;
-	private IndexedBag<Textbook, String> textbooks;
-	private IndexedBag<Student, String> students;
-	private IndexedBag<Instructor, String> instructors;
-	private IndexedBag<Classroom, String> classrooms;
+	private IndexedTree<Course, String> courses;
+	private IndexedTree<Section, String> sections;
+	private IndexedTree<Textbook, String> textbooks;
+	private IndexedTree<Student, String> students;
+	private IndexedTree<Instructor, String> instructors;
+	private IndexedTree<Classroom, String> classrooms;
 	
 	
 	private DataCenter() {
@@ -32,12 +32,12 @@ public class DataCenter implements Serializable {
 		studentIdSeq = 1L;
 		instructorIdSeq = 1L;
 		
-		courses = new IndexedBag<>(false, false);
-		sections = new IndexedBag<>(false, false);
-		textbooks = new IndexedBag<>(false, false);
-		students = new IndexedBag<>(false, false);
-		instructors = new IndexedBag<>(false, false);
-		classrooms = new IndexedBag<>(false, false);
+		courses = new IndexedTree<>();
+		sections = new IndexedTree<>();
+		textbooks = new IndexedTree<>();
+		students = new IndexedTree<>();
+		instructors = new IndexedTree<>();
+		classrooms = new IndexedTree<>();
 	}
 	
 	public static DataCenter getInstance() {
@@ -86,7 +86,7 @@ public class DataCenter implements Serializable {
 	}
 	
 	
-	private String generateUniqueId(Long seq, int length, IndexedBag<?,String> bag) {
+	private String generateUniqueId(Long seq, int length, IndexedTree<?,String> bag) {
 		boolean isUnique = false;
 		String temp = "";
 		while (!isUnique) {
@@ -103,22 +103,22 @@ public class DataCenter implements Serializable {
 	}
 	
 	
-	public IndexedBag<Course, String> getCourses() {
+	public IndexedTree<Course, String> getCourses() {
 		return courses;
 	}
-	public IndexedBag<Section, String> getSections() {
+	public IndexedTree<Section, String> getSections() {
 		return sections;
 	}
-	public IndexedBag<Textbook, String> getTextbooks() {
+	public IndexedTree<Textbook, String> getTextbooks() {
 		return textbooks;
 	}
-	public IndexedBag<Student, String> getStudents() {
+	public IndexedTree<Student, String> getStudents() {
 		return students;
 	}
-	public IndexedBag<Instructor, String> getInstructors() {
+	public IndexedTree<Instructor, String> getInstructors() {
 		return instructors;
 	}
-	public IndexedBag<Classroom, String> getClassrooms() {
+	public IndexedTree<Classroom, String> getClassrooms() {
 		return classrooms;
 	}
 	
@@ -141,41 +141,41 @@ public class DataCenter implements Serializable {
 		return classrooms.find(id);
 	}
 	
-	public boolean addCourse(Course course) {
+	public Course addCourse(Course course) {
 		return courses.add(course);
 	}
-	public boolean addSection(Section section) {
+	public Section addSection(Section section) {
 		return sections.add(section);
 	}
-	public boolean addTextbook(Textbook textbook) {
+	public Textbook addTextbook(Textbook textbook) {
 		return textbooks.add(textbook);
 	}
-	public boolean addStudent(Student student) {
+	public Student addStudent(Student student) {
 		return students.add(student);
 	}
-	public boolean addInstructor(Instructor instructor) {
+	public Instructor addInstructor(Instructor instructor) {
 		return instructors.add(instructor);
 	}
-	public boolean addClassroom(Classroom classroom) {
+	public Classroom addClassroom(Classroom classroom) {
 		return classrooms.add(classroom);
 	}
 	
-	public boolean removeCourse(Course course) {
+	public Course removeCourse(Course course) {
 		return courses.remove(course);
 	}
-	public boolean removeSection(Section section) {
+	public Section removeSection(Section section) {
 		return sections.remove(section);
 	}
-	public boolean removeTextbook(Textbook textbook) {
+	public Textbook removeTextbook(Textbook textbook) {
 		return textbooks.remove(textbook);
 	}
-	public boolean removeStudent(Student student) {
+	public Student removeStudent(Student student) {
 		return students.remove(student);
 	}
-	public boolean removeInstructor(Instructor instructor) {
+	public Instructor removeInstructor(Instructor instructor) {
 		return instructors.remove(instructor);
 	}
-	public boolean removeClassroom(Classroom classroom) {
+	public Classroom removeClassroom(Classroom classroom) {
 		return classrooms.remove(classroom);
 	}
 	

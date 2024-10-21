@@ -78,32 +78,32 @@ public class Utility {
 		DataCenter dc = DataCenter.getInstance();
 		
 		System.out.println("Courses");
-		for (Course c : dc.getCourses())
+		for (Object c : dc.getCourses().toArray())
 			//System.out.println("   " + c.getTitle() + " " + c.getId());
 			System.out.println(" " + c.toString());
 		
 		System.out.println("Sections");
-		for (Section s : dc.getSections())
+		for (Object s : dc.getSections().toArray())
 			//System.out.println("   " + dc.findCourse(s.getCourseNumber()).getTitle() + " " + s.getId());
 			System.out.println(" " + s.toString());
 		
 		System.out.println("Textbooks");
-		for (Textbook t : dc.getTextbooks())
+		for (Object t : dc.getTextbooks().toArray())
 			//System.out.println("   " + t.getTitle() + " " + t.getId());
 			System.out.println(" " + t.toString());
 		
 		System.out.println("Students");
-		for (Student s : dc.getStudents())
+		for (Object s : dc.getStudents().toArray())
 			//System.out.println("   " + s.getName().toString() + " " + s.getId() + " " + s.getGpa());
 			System.out.println(" " + s.toString());
 		
 		System.out.println("Instructors");
-		for (Instructor i : dc.getInstructors())
+		for (Object i : dc.getInstructors().toArray())
 			//System.out.println("   " + i.getName().toString() + " " + i.getId());
 			System.out.println(" " + i.toString());
 		
 		System.out.println("Classrooms");
-		for (Classroom c : dc.getClassrooms())
+		for (Object c : dc.getClassrooms().toArray())
 			//System.out.println("   " + c.getId());
 			System.out.println(" " + c.toString());
 		
